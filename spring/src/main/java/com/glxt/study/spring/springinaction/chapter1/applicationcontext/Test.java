@@ -1,6 +1,7 @@
 package com.glxt.study.spring.springinaction.chapter1.applicationcontext;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -13,8 +14,18 @@ public class Test
 
 	public static void main(String[] args)
 	{
-		method2();
+		method3();
 	}
+	
+	public static void method3()
+	{
+		// 方式三：AnnotationConfigApplicationContext
+		ApplicationContext context = new AnnotationConfigApplicationContext(
+				com.glxt.study.spring.springinaction.chapter1.applicationcontext.Test.class);
+		Test test = (Test) context.getBean("test");
+		test.say();
+	}
+	
 	public static void method2()
 	{
 		// 方式二：FileSystemXmlApplicationContext
