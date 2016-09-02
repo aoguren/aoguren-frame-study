@@ -22,7 +22,7 @@ public class Test
 		// 方式三：AnnotationConfigApplicationContext
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				com.glxt.study.spring.springinaction.chapter1.applicationcontext.Test.class);
-		Test test = (Test) context.getBean("test");
+		Test test = (Test) context.getBean(com.glxt.study.spring.springinaction.chapter1.applicationcontext.Test.class);
 		test.say();
 	}
 	
