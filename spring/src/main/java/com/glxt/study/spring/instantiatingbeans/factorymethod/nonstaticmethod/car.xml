@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- Instance Factory Method:
+         1.must create a bean for the Instance Factroy First
+     -->
+  <bean id="carFactory" class="com.glxt.study.spring.instantiatingbeans.factorymethod.nonstaticmethod.CarFactory">
+    <property name="map">
+        <map>
+            <entry key="1">
+                <bean class="com.glxt.study.spring.instantiatingbeans.factorymethod.nonstaticmethod.Car">
+                    <property name="id" value="1"></property>
+                    <property name="name" value="Honda"></property>
+                    <property name="price" value="300000"></property>
+                </bean>
+            </entry>
+            <entry key="2">
+                <bean class="com.glxt.study.spring.instantiatingbeans.factorymethod.nonstaticmethod.Car">
+                    <property name="id" value="2"></property>
+                    <property name="name" value="Audi"></property>
+                    <property name="price" value="440000"></property>
+                </bean>
+            </entry>
+            <entry key="3">
+                <bean class="com.glxt.study.spring.instantiatingbeans.factorymethod.nonstaticmethod.Car">
+                    <property name="id" value="3"></property>
+                    <property name="name" value="BMW"></property>
+                    <property name="price" value="540000"></property>
+                </bean>
+            </entry>
+        </map>
+    </property>
+  </bean>
+  
+  <!-- 2.use Factory bean to get bean object 
+        factory-bean : the bean define above
+        factory-method: method of get Bean Object
+        constructor-arg: parameters of factory-method
+     -->
+  <bean id="bmwCar" factory-bean="carFactory" factory-method="getCar">
+    <constructor-arg value="3"></constructor-arg>
+  </bean>
+  
+  <bean id="audiCar" factory-bean="carFactory" factory-method="getCar">
+    <constructor-arg value="2"></constructor-arg>
+  </bean>
+  
+</beans>
