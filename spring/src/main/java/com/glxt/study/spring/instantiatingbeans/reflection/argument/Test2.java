@@ -12,8 +12,13 @@ public class Test2
 {
 	public static void main(String[] args)
 	{
+		System.out.println();
+		testMethod();
+//		System.out.println(car);
+	}
+	public static void testMethod()
+	{
 		ApplicationContext context = new ClassPathXmlApplicationContext("com/glxt/study/spring/instantiatingbeans/reflection/argument/car2.xml");
 		Car car = context.getBean("car", Car.class);
-		System.out.println(car);
 	}
 }
