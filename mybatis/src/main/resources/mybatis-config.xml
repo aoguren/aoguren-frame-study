@@ -8,10 +8,7 @@
 		<!--<property name="jdbc.username" value="root"/>-->
   		<!--<property name="jdbc.password" value="verysecurepwd"/>	-->
 	<!--</properties>-->
-
-	  <typeAliases>
-	  	<package name="com.mybatis3.domain"/>
-	  </typeAliases>
+	
 	
 	  <environments default="development">
 	    <environment id="development">
