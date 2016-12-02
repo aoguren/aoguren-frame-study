@@ -1,5 +1,6 @@
 package com.glxt.po;
 
+import com.glxt.dao.StudentDAO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -37,8 +38,9 @@ public void test() throws Exception {
 
     SqlSession session = sqlSessionFactory.openSession();
     try {
-        Student blog = session.selectOne("com.glxt.mappers.StudentMapper.findStudentById", 1);
-        System.out.println(blog);
+        StudentDAO studentDAO = session.getMapper(StudentDAO.class);
+        Student student = studentDAO.findStudentById(1);
+        System.out.println(student);
     } finally {
         session.close();
     }
