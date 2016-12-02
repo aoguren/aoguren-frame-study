@@ -35,7 +35,6 @@ public void test() throws Exception {
     String resource = "mybatis-config.xml";
     InputStream inputStream = Resources.getResourceAsStream(resource);
     SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
     SqlSession session = sqlSessionFactory.openSession();
     try {
         StudentDAO studentDAO = session.getMapper(StudentDAO.class);
@@ -44,6 +43,7 @@ public void test() throws Exception {
     } finally {
         session.close();
     }
+
 }
 
 } 

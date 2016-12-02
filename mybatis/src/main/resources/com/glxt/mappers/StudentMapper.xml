@@ -5,7 +5,7 @@
 
 <mapper namespace="com.glxt.dao.StudentDAO">
 
-    <select id="findStudentById" parameterType="int" resultType="com.glxt.po.Student">
+    <select id="findStudentById" parameterType="int" resultType="Student">
         select stud_id as studId, name, email, dob from Students where stud_id=#{studId}
     </select>
 

@@ -3,10 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+	<!-- 属性特定配置，或引入属性资源 -->
 	<properties resource="application.properties">
 		<property name="password" value="root" />
 	</properties>
+	<!--<properties resource="application.properties"/>-->
+
+	<!-- 类型别名，简化名称 -->
+	<typeAliases>
+		<!--<typeAlias alias="Student" type="com.glxt.po.Student" />-->
+		<package name="com.glxt.po"/>
+	</typeAliases>
 
 	<environments default="development">
 	    <environment id="development">
