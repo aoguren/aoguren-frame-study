@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.After;
 
 import java.io.InputStream;
+import java.util.Date;
 
 /** 
 * Student Tester. 
@@ -46,4 +47,21 @@ public void test() throws Exception {
 
 }
 
+    @Test
+    public void testTypeHandler() throws Exception
+    {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            StudentDAO studentDAO = session.getMapper(StudentDAO.class);
+            Student student = new Student(33, "lisi", "liggi@126.com", new Date());
+            PhoneNumber phoneNumber = new PhoneNumber("110", "01", "345");
+            student.setPhone(phoneNumber);
+            studentDAO.insertStudent(student);
+        } finally {
+            session.close();
+        }
+    }
 } 

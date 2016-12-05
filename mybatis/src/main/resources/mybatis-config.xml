@@ -15,6 +15,11 @@
 		<package name="com.glxt.po"/>
 	</typeAliases>
 
+	<!-- 类型处理器，Java与JDBC类型相互转换-->
+	<typeHandlers>
+		<typeHandler handler="com.glxt.typehandlers.PhoneTypeHandler"></typeHandler>
+	</typeHandlers>
+
 	<environments default="development">
 	    <environment id="development">
 	      	<transactionManager type="JDBC"/>

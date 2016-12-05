@@ -11,6 +11,7 @@ public class Student
     private String name;
     private String email;
     private Date dob;
+    private PhoneNumber phone;
 
     public Student()
     {
@@ -80,5 +81,13 @@ public class Student
         this.dob = dob;
     }
 
+    public PhoneNumber getPhone()
+    {
+        return phone;
+    }
 
+    public void setPhone(PhoneNumber phone)
+    {
+        this.phone = phone;
+    }
 }

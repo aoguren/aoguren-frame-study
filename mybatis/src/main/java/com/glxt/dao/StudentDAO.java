@@ -6,4 +6,6 @@ import com.glxt.po.Student;
 public interface StudentDAO
 {
     public Student findStudentById(int id);
+
+    public void insertStudent(Student student);
 }
