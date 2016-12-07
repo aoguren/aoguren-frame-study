@@ -10,6 +10,8 @@ import org.junit.Before;
 import org.junit.After;
 
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Date;
 
 /** 
@@ -60,6 +62,23 @@ public void test() throws Exception {
             PhoneNumber phoneNumber = new PhoneNumber("110", "01", "345");
             student.setPhone(phoneNumber);
             studentDAO.insertStudent(student);
+            session.commit();   // 注意需要手动提交
+        } finally {
+            session.close();
+        }
+    }
+    @Test
+    public void testInsert() throws Exception
+    {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            StudentDAO studentDAO = session.getMapper(StudentDAO.class);
+            Student student = new Student(33, "lisi", "liggi@126.com", new Date());
+            studentDAO.insertStudent(student);
+            session.commit();   // 注意需要手动提交
         } finally {
             session.close();
         }
