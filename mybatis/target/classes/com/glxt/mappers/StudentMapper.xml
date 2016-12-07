@@ -9,6 +9,10 @@
         select stud_id as studId, name, email, dob from Students where stud_id=#{studId}
     </select>
 
+    <select id="findAllStudents" resultType="Student">
+        select stud_id as studId, name, email, phone from students
+    </select>
+
     <insert id="insertStudent" parameterType="Student">
         INSERT INTO students(name, email, phone)
         VALUES (#{name}, #{email}, #{phone})

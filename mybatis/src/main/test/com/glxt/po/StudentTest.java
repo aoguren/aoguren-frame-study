@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Date;
+import java.util.List;
 
 /** 
 * Student Tester. 
@@ -83,4 +84,23 @@ public void test() throws Exception {
             session.close();
         }
     }
-} 
+
+    @Test
+    public void testFindAllStudents() throws Exception {
+
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            StudentDAO studentDAO = session.getMapper(StudentDAO.class);
+            List<Student> students = studentDAO.findAllStudents();
+            for (Student student : students)
+            {
+                System.out.println(student);
+            }
+        } finally {
+            session.close();
+        }
+    }
+}
