@@ -9,6 +9,16 @@
         select stud_id as studId, name, email, dob from Students where stud_id=#{studId}
     </select>
 
+    <resultMap id="studentResultMap" type="Student">
+        <id property="studId" column="stud_id"></id>
+        <result property="name" column="name"></result>
+        <result property="email" column="email"></result>
+    </resultMap>
+
+    <select id="selectStudent" parameterType="int" resultMap="studentResultMap">
+        select stud_id, name, email from Students where stud_id=#{studId}
+    </select>
+
     <select id="findAllStudents" resultType="Student">
         select stud_id as studId, name, email, phone from students
     </select>

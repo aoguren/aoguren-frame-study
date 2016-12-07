@@ -103,4 +103,25 @@ public void test() throws Exception {
             session.close();
         }
     }
+
+    @Test
+    public void testselectStudent() throws Exception {
+
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            StudentDAO studentDAO = session.getMapper(StudentDAO.class);
+            List<Student> students = studentDAO.selectStudent(3);
+            for (Student student : students)
+            {
+                System.out.println(student);
+            }
+
+
+        } finally {
+            session.close();
+        }
+    }
 }
