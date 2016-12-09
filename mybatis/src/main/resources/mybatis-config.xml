@@ -34,6 +34,7 @@
 	  
 	<mappers>
 	    <mapper resource="com/glxt/mappers/StudentMapper.xml"/>
+		<mapper resource="com/glxt/mappers/TutorMapper.xml"/>
 	</mappers>
   	
 </configuration>

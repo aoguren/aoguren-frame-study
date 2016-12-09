@@ -43,11 +43,6 @@ public void after() throws Exception {
 
 @Test
 public void test() throws Exception {
-
-    String resource = "mybatis-config.xml";
-    InputStream inputStream = Resources.getResourceAsStream(resource);
-    SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-    SqlSession session = sqlSessionFactory.openSession();
     try {
         StudentDAO studentDAO = session.getMapper(StudentDAO.class);
         Student student = studentDAO.findStudentById(1);
@@ -61,10 +56,6 @@ public void test() throws Exception {
     @Test
     public void testTypeHandler() throws Exception
     {
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession session = sqlSessionFactory.openSession();
         try {
             StudentDAO studentDAO = session.getMapper(StudentDAO.class);
             Student student = new Student(33, "lisi", "liggi@126.com", new Date());
@@ -79,10 +70,6 @@ public void test() throws Exception {
     @Test
     public void testInsert() throws Exception
     {
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession session = sqlSessionFactory.openSession();
         try {
             StudentDAO studentDAO = session.getMapper(StudentDAO.class);
             Student student = new Student(33, "lisi", "liggi@126.com", new Date());
@@ -96,10 +83,6 @@ public void test() throws Exception {
     @Test
     public void testFindAllStudents() throws Exception {
 
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession session = sqlSessionFactory.openSession();
         try {
             StudentDAO studentDAO = session.getMapper(StudentDAO.class);
             List<Student> students = studentDAO.findAllStudents();
@@ -114,11 +97,6 @@ public void test() throws Exception {
 
     @Test
     public void testSelectStudent() throws Exception {
-
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession session = sqlSessionFactory.openSession();
         try {
             StudentDAO studentDAO = session.getMapper(StudentDAO.class);
             List<Student> students = studentDAO.selectStudent(3);
