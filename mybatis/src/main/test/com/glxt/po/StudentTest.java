@@ -23,13 +23,21 @@ import java.util.List;
 * @version 1.0 
 */ 
 public class StudentTest { 
-
+    private SqlSession session = null;
 @Before
-public void before() throws Exception { 
+public void before() throws Exception {
+    String resource = "mybatis-config.xml";
+    InputStream inputStream = Resources.getResourceAsStream(resource);
+    SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+    session = sqlSessionFactory.openSession();
 } 
 
 @After
-public void after() throws Exception { 
+public void after() throws Exception {
+    if (session != null)
+    {
+        session.close();
+    }
 } 
 
 
@@ -105,7 +113,7 @@ public void test() throws Exception {
     }
 
     @Test
-    public void testselectStudent() throws Exception {
+    public void testSelectStudent() throws Exception {
 
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
@@ -120,6 +128,20 @@ public void test() throws Exception {
             }
 
 
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testFindStudentWithAddress() throws Exception {
+        try {
+            StudentDAO studentDAO = session.getMapper(StudentDAO.class);
+            List<Student> students = studentDAO.findStudentWithAddress(1);
+            for (Student student : students)
+            {
+                System.out.println(student);
+            }
         } finally {
             session.close();
         }

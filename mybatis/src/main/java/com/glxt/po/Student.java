@@ -12,7 +12,7 @@ public class Student
     private String email;
     private Date dob;
     private PhoneNumber phone;
-
+    private Address address;
     public Student()
     {
     }
@@ -89,5 +89,15 @@ public class Student
     public void setPhone(PhoneNumber phone)
     {
         this.phone = phone;
+    }
+
+    public Address getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(Address address)
+    {
+        this.address = address;
     }
 }

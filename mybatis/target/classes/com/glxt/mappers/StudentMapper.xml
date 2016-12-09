@@ -14,6 +14,7 @@
         <result property="name" column="name"></result>
         <result property="email" column="email"></result>
     </resultMap>
+
     <select id="selectStudent" parameterType="int" resultMap="studentResultMap">
         select stud_id, name, email from Students where stud_id=#{studId}
     </select>
@@ -26,4 +27,27 @@
         INSERT INTO students(name, email, phone)
         VALUES (#{name}, #{email}, #{phone})
     </insert>
+
+    <resultMap id="AddressResult" type="Address">
+        <id property="addrId" column="addr_id"></id>
+        <result property="street" column="street"></result>
+        <result property="city" column="city"></result>
+        <result property="state" column="state"></result>
+        <result property="zip" column="zip"></result>
+        <result property="country" column="country"></result>
+    </resultMap>
+    <resultMap id="StudentWithAddressResult" type="Student">
+        <id property="studId" column="stud_id"></id>
+        <result property="name" column="name"></result>
+        <result property="email" column="email"></result>
+        <association property="address" resultMap="AddressResult"></association>
+    </resultMap>
+    <select id="findStudentWithAddress" parameterType="int"
+            resultMap="StudentWithAddressResult">
+        SELECT STUD_ID, NAME, EMAIL, A.ADDR_ID, STREET, CITY, STATE,
+        ZIP, COUNTRY
+        FROM STUDENTS S LEFT OUTER JOIN ADDRESSES A ON
+        S.ADDR_ID=A.ADDR_ID
+        WHERE STUD_ID=#{studId}
+    </select>
 </mapper>

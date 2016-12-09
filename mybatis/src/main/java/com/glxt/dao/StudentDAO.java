@@ -12,6 +12,8 @@ public interface StudentDAO
 
     public List<Student> selectStudent(int id);
 
+    public List<Student> findStudentWithAddress(int studId);
+
     public List<Student> findAllStudents();
 
     public void insertStudent(Student student);
